@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+header {
+    background-color: #333333;
+    padding: 0.25rem 0 0.25rem 1.5rem;
+    color: white;
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.sidebar {
+    background-color: rgb(226, 226, 226);
+    padding-left: 1rem;
+    
+    width: 25vw;
+    height: 100vh;
+}
+.tabs {
+    cursor: pointer;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    width: 65%;
+    padding: 4px 4px 4px 4px;
+}
+
+.tabs:hover {
+    background-color: rgb(199, 199, 199);
+}
+
+
+span {
+    margin-right: 5px;
+}
