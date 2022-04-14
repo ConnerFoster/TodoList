@@ -3,11 +3,14 @@ class Project {
     this.name = name;
     this.tasks = [];
   }
-  get name() {
+  getName() {
     return this.name;
   }
-  set name(name) {
-    this.name = name;
+  setName(value) {
+    this.name = value;
+  }
+  addTask(task) {
+    this.tasks.push(task);
   }
 }
 
