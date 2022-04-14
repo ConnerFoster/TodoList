@@ -515,11 +515,14 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"bNKaB":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _task = require("./task"); //let thisTask = new Task("Clean", new Date(2022, 11, 23));
- //console.log(thisTask);
+var _task = require("./task");
 var _taskDefault = parcelHelpers.interopDefault(_task);
+var _ui = require("./UI");
+var _uiDefault = parcelHelpers.interopDefault(_ui);
+document.addEventListener("DOMContentLoaded", _uiDefault.default.displayProjects()); //let thisTask = new Task("Clean", new Date(2022, 11, 23));
+ //console.log(thisTask);
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./task":"8mW4a"}],"gkKU3":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./task":"8mW4a","./UI":"d3pWC"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -562,6 +565,17 @@ class Task {
     }
 }
 exports.default = Task;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d3pWC":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class UI {
+    static displayProjects() {
+        let projectsdiv = document.getElementById("projects-container");
+        projectsdiv.innerHTML = "Test";
+    }
+}
+exports.default = UI;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["6IXwR","bNKaB"], "bNKaB", "parcelRequire78f8")
 

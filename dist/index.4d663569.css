@@ -12,16 +12,20 @@ header {
 
 h3 {
   margin: 0;
-  font-size: 16px;
+  font-size: .75rem;
   font-weight: 400;
 }
 
+main {
+  display: flex;
+}
+
 .sidebar {
-  width: 25vw;
+  width: 10rem;
   height: 100vh;
   background-color: #e2e2e2;
   padding-top: 1rem;
-  padding-left: 1rem;
+  padding-left: 1.5rem;
 }
 
 .tabs {
