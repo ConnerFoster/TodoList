@@ -20,15 +20,15 @@ h3 {
 .sidebar {
     background-color: rgb(226, 226, 226);
     padding-left: 1rem;
-    
+    padding-top: 1rem;
     width: 25vw;
     height: 100vh;
 }
 .tabs {
     cursor: pointer;
     margin-bottom: 8px;
-    border-radius: 8px;
-    width: 65%;
+    border-radius: 6px;
+    width: 80%;
     padding: 4px 4px 4px 4px;
 }
 
@@ -39,4 +39,15 @@ h3 {
 
 span {
     margin-right: 5px;
+}
+
+.add {
+    border:none;
+    background-color: rgb(226, 226, 226);
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 8px;
+}
+.add:hover {
+    background-color: rgb(199, 199, 199);
 }

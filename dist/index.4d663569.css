@@ -20,13 +20,14 @@ h3 {
   width: 25vw;
   height: 100vh;
   background-color: #e2e2e2;
+  padding-top: 1rem;
   padding-left: 1rem;
 }
 
 .tabs {
   cursor: pointer;
-  width: 65%;
-  border-radius: 8px;
+  width: 80%;
+  border-radius: 6px;
   margin-bottom: 8px;
   padding: 4px;
 }
@@ -37,6 +38,18 @@ h3 {
 
 span {
   margin-right: 5px;
+}
+
+.add {
+  cursor: pointer;
+  background-color: #e2e2e2;
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.add:hover {
+  background-color: #c7c7c7;
 }
 
 /*# sourceMappingURL=index.4d663569.css.map */
