@@ -13,6 +13,10 @@ export default class TodoList {
   getProjects() {
     return this.projects;
   }
+  findProject(name) {
+    //console.log(this.projects[2].name);
+    return this.projects.find((el) => el.getName() === name);
+  }
   addToInbox(task) {
     this.inbox.push(task);
     let todaysDate = new Date();

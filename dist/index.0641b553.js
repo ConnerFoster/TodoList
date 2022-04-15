@@ -584,19 +584,33 @@ const projectsdiv = document.getElementById("projects-container");
 const addProjectBtn = document.getElementById("add-project-button");
 const addProjectDiv = document.querySelector("#add-project");
 const mainContent = document.querySelector("#main-content");
+const inboxTab = document.querySelector("#inbox-tab");
+const todayTab = document.querySelector("#today-tab");
+const weekTab = document.querySelector("#week-tab");
 myList.addToInbox(new _taskDefault.default("Test", new Date(2022, 3, 14), "high"));
+myList.addToInbox(new _taskDefault.default("Test2", new Date(2022, 3, 15), "high"));
+myList.addToInbox(new _taskDefault.default("Test3", new Date(2022, 3, 16), "high"));
+myList.addProject(new _projectsDefault.default("Test"));
+myList.addProject(new _projectsDefault.default("Test2"));
+let tester = new _projectsDefault.default("Test3");
+tester.addTask(new _taskDefault.default("Laundry", new Date(2023, 2, 22), "High"));
+myList.addProject(tester);
 class UI {
     static loadHome() {
         this.displayProjects();
+        this.setupProjectBtns();
         this.loadInboxContent();
-        this.loadWeekContent();
+    //this.loadTodayContent();
+    //this.loadWeekContent();
     //this.initButtons();
     }
     static displayProjects() {
         let projects = myList.getProjects();
         projectsdiv.innerHTML = "";
         projects.forEach((item)=>{
-            projectsdiv.innerHTML += `<h3>${item.name}</h3>`;
+            projectsdiv.innerHTML += `<div class="project-tab">
+      <h3 class="project-buttons"><span><i class="fa-solid fa-list-check"></i></span>${item.name}</h3>
+      </div>`;
         });
     }
     static showProjectInput() {
@@ -645,6 +659,35 @@ class UI {
                                   </div>`;
         });
     }
+    static loadProjectContent(project) {
+        console.log(project);
+        let obj = myList.findProject(project);
+        console.log(obj);
+        mainContent.innerHTML = `<h2>${obj.name}</h2>`;
+        let tasks = obj.getTasks();
+        tasks.forEach((task)=>{
+            mainContent.innerHTML += `<div class='task-card'>
+                                    <input type='checkbox' class='task-item'>    
+                                    <h3 class='task-item'>${task.title}</h3>
+                                    <h3 class='task-item'>${task.dueDate.toDateString()}</h3>
+                                    </div>`;
+        });
+    }
+    static setupProjectBtns() {
+        let projectBtns = document.getElementsByClassName("project-buttons");
+        inboxTab.addEventListener("click", ()=>{
+            this.loadInboxContent();
+        });
+        todayTab.addEventListener("click", ()=>{
+            this.loadTodayContent();
+        });
+        weekTab.addEventListener("click", ()=>{
+            this.loadWeekContent();
+        });
+        for (let projectBtn of projectBtns)projectBtn.addEventListener("click", function() {
+            UI.loadProjectContent(projectBtn.textContent);
+        });
+    }
 }
 exports.default = UI;
 
@@ -665,6 +708,11 @@ class TodoList {
     }
     getProjects() {
         return this.projects;
+    }
+    findProject(name) {
+        //console.log(this.projects[2].name);
+        return this.projects.find((el)=>el.getName() === name
+        );
     }
     addToInbox(task) {
         this.inbox.push(task);
@@ -703,6 +751,9 @@ class Project {
     }
     addTask(task) {
         this.tasks.push(task);
+    }
+    getTasks() {
+        return this.tasks;
     }
 }
 exports.default = Project;

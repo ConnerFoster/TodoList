@@ -74,4 +74,16 @@ span {
   background-color: #e2e2e2;
 }
 
+.project-tab {
+  cursor: pointer;
+  width: 80%;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  padding: 4px;
+}
+
+.project-tab:hover {
+  background-color: #c7c7c7;
+}
+
 /*# sourceMappingURL=index.4d663569.css.map */

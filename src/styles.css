@@ -42,7 +42,6 @@ main {
     background-color: rgb(199, 199, 199);
 }
 
-
 span {
     margin-right: 5px;
 }
@@ -74,3 +73,13 @@ span {
     background-color: rgb(226, 226, 226);
 }
 
+.project-tab  {
+    cursor: pointer;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    width: 80%;
+    padding: 4px 4px 4px 4px;
+}
+.project-tab:hover {
+    background-color: rgb(199, 199, 199);
+}
