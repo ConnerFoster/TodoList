@@ -1,7 +1,6 @@
 import TodoList from "./todolist";
 import Project from "./projects";
 import Task from "./task";
-import { compareAsc, format } from "date-fns";
 
 const myList = new TodoList();
 const projectsdiv = document.getElementById("projects-container");
