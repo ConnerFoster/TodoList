@@ -48,14 +48,26 @@ span {
 
 .add {
   cursor: pointer;
-  background-color: #e2e2e2;
+  background-color: #f3f3f3;
   border: none;
   border-radius: 8px;
   padding: 8px;
 }
 
-.add:hover {
+#add-project-button {
+  background-color: #e2e2e2;
+}
+
+#add-project-button:hover {
   background-color: #c7c7c7;
+}
+
+.add:hover {
+  background-color: #e2e2e2;
+}
+
+.add-task {
+  margin-top: .75rem;
 }
 
 #main-content {
@@ -77,6 +89,7 @@ span {
 .project-tab {
   cursor: pointer;
   width: 80%;
+  word-wrap: break-word;
   border-radius: 6px;
   margin-bottom: 8px;
   padding: 4px;

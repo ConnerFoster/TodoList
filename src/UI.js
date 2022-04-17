@@ -26,9 +26,6 @@ class UI {
     this.displayProjects();
     this.setupProjectBtns();
     this.loadInboxContent();
-    //this.loadTodayContent();
-    //this.loadWeekContent();
-    //this.initButtons();
   }
 
   static displayProjects() {
@@ -41,15 +38,32 @@ class UI {
     });
   }
   static showProjectInput() {
-    addProjectBtn.style.visibility = "hidden";
-    addProjectBtn.style.position = "absolute";
+    //addProjectBtn.style.visibility = "hidden";
+    //addProjectBtn.style.position = "absolute";
+    addProjectDiv.innerHTML = "";
     addProjectDiv.innerHTML += "<input id='projects-input' type='text'>";
     addProjectDiv.innerHTML += "<button id='submit-project'>Add</button>";
     addProjectDiv.innerHTML += "<button id='cancel'>Cancel</button>";
+    document.getElementById("cancel").addEventListener("click", () => {
+      UI.cancelProject();
+    });
+    document.getElementById("submit-project").addEventListener("click", () => {
+      const userInput = document.getElementById("projects-input").value;
+      if (userInput.length >= 1) {
+        myList.addProject(new Project(userInput));
+        UI.displayProjects();
+        UI.cancelProject();
+      } else {
+        alert("Project must have a name.");
+        UI.cancelProject();
+      }
+    });
   }
   static cancelProject() {
     addProjectDiv.innerHTML =
       "<button id='add-project-button' class='add'>+ Add Project</button>";
+
+    UI.setupProjectBtns();
   }
 
   static loadInboxContent() {
@@ -57,12 +71,14 @@ class UI {
     let tasks = myList.getInbox();
     console.log(tasks);
     tasks.forEach((task) => {
-      mainContent.innerHTML += `<div class='task-card'>
-                                <input type='checkbox' class='task-item'>    
-                                <h3 class='task-item'>${task.title}</h3>
-                                <h3 class='task-item'>${task.dueDate.toDateString()}</h3>
-                                </div>`;
+      mainContent.innerHTML += `
+      <div class='task-card'>                    
+      <input type='checkbox' class='task-item'>                       
+      <h3 class='task-item'>${task.title}</h3>                   
+      <h3 class='task-item'>${task.dueDate.toDateString()}</h3>                
+      </div>`;
     });
+    mainContent.innerHTML += `<button class="add add-task">+ Add Task</button>`;
   }
 
   static loadTodayContent() {
@@ -70,49 +86,58 @@ class UI {
     let tasks = myList.getToday();
     console.log(tasks);
     tasks.forEach((task) => {
-      mainContent.innerHTML += `<div class='task-card'>
-                                  <input type='checkbox' class='task-item'>    
-                                  <h3 class='task-item'>${task.title}</h3>
-                                  <h3 class='task-item'>${task.dueDate.toDateString()}</h3>
-                                  </div>`;
+      mainContent.innerHTML += `
+      <div class='task-card'>                    
+      <input type='checkbox' class='task-item'>                        
+      <h3 class='task-item'>${task.title}</h3>                     
+      <h3 class='task-item'>${task.dueDate.toDateString()}</h3>                    
+      </div>`;
     });
+    mainContent.innerHTML += `<button class="add add-task">+ Add Task</button>`;
   }
   static loadWeekContent() {
     mainContent.innerHTML = "<h2>This Week</h2>";
     let tasks = myList.getWeek();
     console.log(tasks);
     tasks.forEach((task) => {
-      mainContent.innerHTML += `<div class='task-card'>
-                                  <input type='checkbox' class='task-item'>    
-                                  <h3 class='task-item'>${task.title}</h3>
-                                  <h3 class='task-item'>${task.dueDate.toDateString()}</h3>
-                                  </div>`;
+      mainContent.innerHTML += `
+      <div class='task-card'>                     
+      <input type='checkbox' class='task-item'>                          
+      <h3 class='task-item'>${task.title}</h3>                      
+      <h3 class='task-item'>${task.dueDate.toDateString()}</h3>                        
+      </div>`;
     });
+    mainContent.innerHTML += `<button class="add add-task">+ Add Task</button>`;
   }
   static loadProjectContent(project) {
     console.log(project);
     let obj = myList.findProject(project);
     console.log(obj);
-    mainContent.innerHTML = `<h2>${obj.name}</h2>`;
+    mainContent.innerHTML = `<h2 class="project-titles">${obj.name}</h2>`;
     let tasks = obj.getTasks();
     tasks.forEach((task) => {
       mainContent.innerHTML += `<div class='task-card'>
-                                    <input type='checkbox' class='task-item'>    
-                                    <h3 class='task-item'>${task.title}</h3>
-                                    <h3 class='task-item'>${task.dueDate.toDateString()}</h3>
-                                    </div>`;
+       <input type='checkbox' class='task-item'>    
+       <h3 class='task-item'>${task.title}</h3>
+       <h3 class='task-item'>${task.dueDate.toDateString()}</h3>
+        </div>`;
     });
+    mainContent.innerHTML += `<button class="add add-task">+ Add Task</button>`;
   }
   static setupProjectBtns() {
     let projectBtns = document.getElementsByClassName("project-buttons");
+    const addProjectBtn = document.getElementById("add-project-button");
     inboxTab.addEventListener("click", () => {
-      this.loadInboxContent();
+      UI.loadInboxContent();
     });
     todayTab.addEventListener("click", () => {
-      this.loadTodayContent();
+      UI.loadTodayContent();
     });
     weekTab.addEventListener("click", () => {
-      this.loadWeekContent();
+      UI.loadWeekContent();
+    });
+    addProjectBtn.addEventListener("click", () => {
+      UI.showProjectInput();
     });
     for (let projectBtn of projectBtns) {
       projectBtn.addEventListener("click", function () {

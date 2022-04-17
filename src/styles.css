@@ -45,18 +45,26 @@ main {
 span {
     margin-right: 5px;
 }
-
 .add {
     border:none;
-    background-color: rgb(226, 226, 226);
     cursor: pointer;
     border-radius: 8px;
     padding: 8px;
+    background-color: #f3f3f3;
 }
-.add:hover {
+#add-project-button {
+    background-color: rgb(226, 226, 226);
+}
+#add-project-button:hover {
     background-color: rgb(199, 199, 199);
 }
+.add:hover {
+    background-color: rgb(226, 226, 226);
+}
 
+.add-task {
+    margin-top: 0.75rem;
+}
 #main-content {
     padding-left: 3rem;
 }
@@ -79,6 +87,7 @@ span {
     border-radius: 6px;
     width: 80%;
     padding: 4px 4px 4px 4px;
+    word-wrap: break-word;
 }
 .project-tab:hover {
     background-color: rgb(199, 199, 199);
