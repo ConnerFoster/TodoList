@@ -47,6 +47,7 @@ class UI {
     document.getElementById("cancel").addEventListener("click", () => {
       UI.cancelProject();
     });
+
     document.getElementById("submit-project").addEventListener("click", () => {
       const userInput = document.getElementById("projects-input").value;
       if (userInput.length >= 1) {
@@ -62,7 +63,6 @@ class UI {
   static cancelProject() {
     addProjectDiv.innerHTML =
       "<button id='add-project-button' class='add'>+ Add Project</button>";
-
     UI.setupProjectBtns();
   }
 
@@ -122,7 +122,14 @@ class UI {
        <h3 class='task-item'>${task.dueDate.toDateString()}</h3>
         </div>`;
     });
-    mainContent.innerHTML += `<button class="add add-task">+ Add Task</button>`;
+    mainContent.innerHTML += `<button data-projectid="${project}" class="add add-task">+ Add Task</button>`;
+    const addTaskBtns = document.getElementsByClassName("add-task");
+
+    for (let btn of addTaskBtns) {
+      btn.addEventListener("click", () => {
+        console.log(btn.dataset.projectid);
+      });
+    }
   }
   static setupProjectBtns() {
     let projectBtns = document.getElementsByClassName("project-buttons");

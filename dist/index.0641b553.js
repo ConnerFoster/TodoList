@@ -691,7 +691,11 @@ class UI {
        <h3 class='task-item'>${task.dueDate.toDateString()}</h3>
         </div>`;
         });
-        mainContent.innerHTML += `<button class="add add-task">+ Add Task</button>`;
+        mainContent.innerHTML += `<button data-projectid="${project}" class="add add-task">+ Add Task</button>`;
+        const addTaskBtns = document.getElementsByClassName("add-task");
+        for (let btn of addTaskBtns)btn.addEventListener("click", ()=>{
+            console.log(btn.dataset.projectid);
+        });
     }
     static setupProjectBtns() {
         let projectBtns = document.getElementsByClassName("project-buttons");
